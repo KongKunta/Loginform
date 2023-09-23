@@ -1,10 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const mongoose = require('mongoose');
-const { connect, disconnect } = require('./db/mongoose');
+const { connect } = require('./db/mongoose');
 const saveUser = require('./db/saveUser');
 const encryptPassword = require('./encryptMiddleware');
+const dotenv = require("dotenv")
+dotenv.config()
 
 
 app.set('view engine', 'ejs');
