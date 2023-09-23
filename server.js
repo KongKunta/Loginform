@@ -1,6 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+const mongoose = require('mongoose');
+const { connect, disconnect } = require('./db/mongoose');
+const saveUser = require('./db/saveUser');
 const encryptPassword = require('./encryptMiddleware');
 
 
@@ -20,8 +23,10 @@ app.get('/login', (req, res) => {
 app.use(encryptPassword)
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
+    connect();
     res.send('login post')
     console.log(username)
+    saveUser(username, password);
     console.log(password)
     });
 
