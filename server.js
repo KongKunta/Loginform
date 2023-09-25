@@ -5,6 +5,8 @@ const { connect } = require('./db/mongoose');
 const saveUser = require('./db/saveUser');
 const encryptPassword = require('./encryptMiddleware');
 const dotenv = require("dotenv")
+const findUser = require('./db/findUser');
+const { find } = require('./db/userSchema');
 dotenv.config()
 
 
@@ -20,6 +22,17 @@ app.get('/', (req, res) => {
 app.get('/login', (req, res) => {
     res.render('loginform')
 });
+
+app.get('/register', (req, res) => {
+    res.render('register')
+});
+
+app.post('/register', (req, res) => {
+    connect();
+    const user = findUser(req.body.username)
+    console.log(user)
+});
+
 
 app.use(encryptPassword)
 app.post('/login', (req, res) => {
