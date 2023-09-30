@@ -7,6 +7,7 @@ const encryptPassword = require('./encryptMiddleware');
 const dotenv = require("dotenv")
 const findUser = require('./db/findUser');
 const { find } = require('./db/userSchema');
+const comparePassword = require('./compareBcrypt');
 dotenv.config()
 
 
@@ -27,10 +28,11 @@ app.get('/register', (req, res) => {
     res.render('register')
 });
 
-app.post('/register', (req, res) => {
+app.post('/register', async (req, res) => {
     connect();
-    const user = findUser(req.body.username)
-    console.log(user)
+    const user = await findUser(req.body.username)
+    const resultPassword = await comparePassword(req.body.password, user.password)
+    console.log(resultPassword)
 });
 
 

@@ -7,6 +7,7 @@ async function findUser(username) {
 
         if (user) {
             console.log('Fundet bruger:', user);
+            return user;
         } else {
             console.log('Bruger ikke fundet.');
         }
