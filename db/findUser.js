@@ -10,6 +10,7 @@ async function findUser(username) {
             return user;
         } else {
             console.log('Bruger ikke fundet.');
+            return null;
         }
 
         mongoose.disconnect();

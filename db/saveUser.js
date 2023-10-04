@@ -7,6 +7,7 @@ async function saveUser(username, password) {
     try {
         await user.save();
         console.log('User saved successfully');
+        return;
     } catch (err) {
         console.error('Error saving user:', err);
         throw err; // Kast fejlen videre, så den kan håndteres af det kaldende kode.

@@ -16,6 +16,10 @@ router.get('/', (req, res) => {
 .post('/', async (req, res) => {
     connect();
     const user = await findUser(req.body.username)
+    if (!user) {
+        res.render('loginform', { error: 'User not found' });
+        return;
+    }
     const resultPassword = await comparePassword(req.body.password, user.password)
     console.log(resultPassword)
 });

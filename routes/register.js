@@ -13,11 +13,15 @@ router.get('/', (req, res) => {
     res.render('register')
 })
 .use(encryptPassword)
-.post('/', (req, res) => {
+.post('/', async (req, res) => {
     const { username, password } = req.body;
-    connect();
-    res.send('login post')
-    saveUser(username, password);
+    try {
+        connect();
+        await saveUser(username, password);
+        res.redirect('/login');
+    } catch (error) {
+        console.error(error);
+        res.render('register', { error: error });
+    }
     });
-
 module.exports = router;
