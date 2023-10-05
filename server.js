@@ -4,6 +4,7 @@ const dotenv = require("dotenv")
 const register = require('./routes/register');
 const login = require('./routes/login');
 const app = express();
+const user = require('./routes/user')
 dotenv.config()
 
 app.set('view engine', 'ejs');
@@ -17,6 +18,7 @@ app.get('/', (req, res) => {
 
 app.use('/login', login)
 app.use('/register', register)
+app.use('/user', user)
 
 
 app.listen(3000, () => {

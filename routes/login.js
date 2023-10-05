@@ -21,7 +21,11 @@ router.get('/', (req, res) => {
         return;
     }
     const resultPassword = await comparePassword(req.body.password, user.password)
-    console.log(resultPassword)
+    if (!resultPassword) {
+        res.status(401).render('loginform', { error: 'Wrong password' });
+        return;
+    }
+    res.redirect('/user/' + req.body.username);
 });
 
 module.exports = router;
