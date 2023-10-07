@@ -25,6 +25,7 @@ router.get('/', (req, res) => {
         res.status(401).render('loginform', { error: 'Wrong password' });
         return;
     }
+    res.cookie('username', req.body.username);
     res.redirect('/user/' + req.body.username);
 });
 

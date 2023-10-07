@@ -7,11 +7,12 @@ router.use((req, res, next) => {
 })
 
 router.get('/:username', (req, res) => {
-    res.send('User: ' + req.params.username)
+    if (req.cookies.username === req.params.username) {
+        res.render('user', { username: req.params.username });
+        return;
+    }
+    res.redirect('/login');
 })
 
-router.post('/:username', (req, res) => {
-    res.send('User: ' + req.params.username)
-})
 
 module.exports = router;
