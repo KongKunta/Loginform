@@ -7,7 +7,12 @@ router.use((req, res, next) => {
 })
 
 router.get('/:username', (req, res) => {
-    if (req.cookies.username === req.params.username) {
+    // if (req.cookies.username === req.params.username) {
+    //     res.render('user', { username: req.params.username });
+    //     return;
+    // }
+    // res.redirect('/login');
+    if (req.session.username === req.params.username) {
         res.render('user', { username: req.params.username });
         return;
     }

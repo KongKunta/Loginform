@@ -25,7 +25,9 @@ router.get('/', (req, res) => {
         res.status(401).render('loginform', { error: 'Wrong password' });
         return;
     }
-    res.cookie('username', req.body.username);
+    // sender enn cookie med brugernavn som bruges på user til at validere.
+    // res.cookie('username', req.body.username);
+    req.session.username = req.body.username;
     res.redirect('/user/' + req.body.username);
 });
 

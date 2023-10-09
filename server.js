@@ -6,12 +6,20 @@ const login = require('./routes/login');
 const app = express();
 const user = require('./routes/user')
 const cookieParser = require('cookie-parser');
+const session = require('express-session');
 dotenv.config()
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(session({
+    secret: "Siuuu",
+    resave: true,
+    saveUninitialized: false,
+    cookie: {}
+})
+);
 
 
 app.get('/', (req, res) => {
