@@ -7,7 +7,11 @@ const app = express();
 const user = require('./routes/user')
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const { connect } = require('./db/mongoose');
+const MongoStore = require('connect-mongo');
 dotenv.config()
+
+
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.json());
@@ -17,7 +21,7 @@ app.use(session({
     secret: "Siuuu",
     resave: true,
     saveUninitialized: false,
-    cookie: {}
+    store: MongoStore.create({ mongoUrl: `mongodb+srv://pechr87:${process.env.MONGOKODE}@cluster0.j0sd1j1.mongodb.net/?retryWrites=true&w=majority` })
 })
 );
 

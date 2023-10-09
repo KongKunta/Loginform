@@ -27,7 +27,7 @@ router.get('/', (req, res) => {
     }
     // sender enn cookie med brugernavn som bruges på user til at validere.
     // res.cookie('username', req.body.username);
-    req.session.username = req.body.username;
+    req.session.username = user.username;
     res.redirect('/user/' + req.body.username);
 });
 

@@ -13,7 +13,7 @@ async function findUser(username) {
             return null;
         }
 
-        mongoose.disconnect();
+    
     } catch (error) {
         console.error(error);
     }
