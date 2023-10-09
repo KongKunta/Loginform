@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 function connect() {
-    mongoose.connect(`mongodb+srv://pechr87:${process.env.MONGOKODE}@cluster0.j0sd1j1.mongodb.net/?retryWrites=true&w=majority`, { useNewUrlParser: true});
+    mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true});
     const db = mongoose.connection;
     db.on('error', console.error.bind(console, 'connection error:'));
     db.once('open', () => { console.log('connected to db') });

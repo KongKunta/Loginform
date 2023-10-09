@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { connect } = require('../db/mongoose');
 const saveUser = require('../db/saveUser');
-const encryptPassword = require('../encryptMiddleware');
+const encryptPassword = require('../middleware/encryptMiddleware');
 
 router.use((req, res, next) => {
     console.log('Time: ', Date.now())

@@ -20,7 +20,7 @@ app.use(session({
     secret: "Siuuu",
     resave: true,
     saveUninitialized: false,
-    store: MongoStore.create({ mongoUrl: `mongodb+srv://pechr87:${process.env.MONGOKODE}@cluster0.j0sd1j1.mongodb.net/?retryWrites=true&w=majority` })
+    store: MongoStore.create({ mongoUrl: process.env.MONGO_URL })
 })
 );
 
