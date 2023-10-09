@@ -1,8 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const { connect, disconnect } = require('../db/mongoose');
-const findUser = require('../db/findUser');
-const User = require('../db/userSchema')
 
 router.use((req, res, next) => {
     console.log('Time: ', Date.now())

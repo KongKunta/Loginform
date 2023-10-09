@@ -7,7 +7,6 @@ const app = express();
 const user = require('./routes/user')
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-const { connect } = require('./db/mongoose');
 const MongoStore = require('connect-mongo');
 dotenv.config()
 
